@@ -9,10 +9,13 @@ class Home extends Model
 {
     use HasFactory;
 
+    protected $table = 'home';
+
     protected $fillable = [
+        'title',
         'description',
-        'urlImage',
-        'link',
+        'nameImage',
+        'url',
         'orden',
     ];
 }

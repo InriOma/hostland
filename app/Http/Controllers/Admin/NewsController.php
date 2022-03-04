@@ -38,13 +38,20 @@ class NewsController extends Controller
    */
   public function store(Request $request)
   {
+
+    $request->validate([
+      'title' => 'required',
+      'subtitle' => 'required',
+      'texto' => 'required',
+    ]);
+
     $storeNews = News::create([
       'title' => $request->title,
       'subtitle' => $request->subtitle,
-      'text' => $request->text,
+      'texto' => $request->texto,
     ]);
 
-    return redirect()->route('adminNews')->with('status', 'Noticia Capturado!');
+    return redirect()->route('adminNews')->with('success', 'Noticia capturada exitosamente!');
   }
 
   /**
@@ -66,6 +73,7 @@ class NewsController extends Controller
    */
   public function edit(News $news)
   {
+    return view('admin.news.edit', compact('news'));
   }
 
   /**
@@ -77,7 +85,16 @@ class NewsController extends Controller
    */
   public function update(Request $request, News $news)
   {
-    //
+
+    $request->validate([
+      'title' => 'required',
+      'subtitle' => 'required',
+      'texto' => 'required',
+    ]);
+
+    $news->update($request->all());
+
+    return redirect()->route('adminNews')->with('success', 'Noticia actualizada exitosamente!');
   }
 
   /**
@@ -88,6 +105,8 @@ class NewsController extends Controller
    */
   public function destroy(News $news)
   {
-    //
+    $news->delete();
+
+    return redirect()->route('adminNews')->with('success', 'Noticia borrada exitosamente!');
   }
 }

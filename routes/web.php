@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-  return view('welcome');
+  return view('public.home');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -23,17 +24,39 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 /* Rutas Públicas */
-Route::get('/home', 'App\Http\Controllers\Public\HomeController@index')->name('home');
-Route::get('/noticias', 'App\Http\Controllers\Public\NewsController@index')->name('news');
-Route::get('/contacto', 'App\Http\Controllers\Public\ContactController@index')->name('contacto');
+Route::get('/home', 'App\Http\Controllers\Public\HomeController@index')->name('publicHome');
+Route::get('/noticias', 'App\Http\Controllers\Public\NewsController@index')->name('publicNews');
+Route::get('/contacto', 'App\Http\Controllers\Public\ContactController@index')->name('publicContact');
+Route::post('/contacto', 'App\Http\Controllers\Public\ContactController@store')->name('publicContactStore');
 
 /* Rutas Admin */
 Route::get('admin/home', 'App\Http\Controllers\Admin\HomeController@index')->name('adminHome');
 
 
+/*
 Route::get('admin/news', 'App\Http\Controllers\Admin\NewsController@index')->name('adminNews');
 Route::get('admin/news/create', 'App\Http\Controllers\Admin\NewsController@create')->name('adminNewsCreate');
+Route::post('admin/news/store', 'App\Http\Controllers\Admin\NewsController@store')->name('adminNewsStore');
 Route::get('admin/news/edit/{id}', 'App\Http\Controllers\Admin\NewsController@edit')->name('adminNewsEdit');
+Route::patch('admin/news/edit/{id}', 'App\Http\Controllers\Admin\NewsController@update')->name('adminNewsUpdate');
+Route::delete('admin/news/{id}', 'App\Http\Controllers\Admin\NewsController@destroy')->name('adminNewsDestroy');
+*/
 
+Route::resource('admin/news', 'App\Http\Controllers\Admin\NewsController', [
+  'names' => [
+    'index' => 'adminNews',
+    'create' => 'adminNewsCreate',
+    'store' => 'adminNewsStore',
+    'edit' => 'adminNewsEdit',
+    'update' => 'adminNewsUpdate',
+    'destroy' => 'adminNewsDestroy'
+  ]
+]);
 
-/*Route::resource('admin/news', 'App\Http\Controllers\Admin\NewsController');*/
+Route::resource('admin/home', 'App\Http\Controllers\Admin\HomeController', [
+  'names' => [
+    'index' => 'adminHome',
+    'edit' => 'adminHomeEdit',
+    'update' => 'adminHomeUpdate',
+  ]
+]);

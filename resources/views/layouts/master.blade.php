@@ -26,7 +26,6 @@
 
   <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />
   <link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome.all.min.css') }}" />
-  
   <link rel="stylesheet" type="text/css" href="{{ asset('css/hostland.css') }}" />
   
   @stack('css')
@@ -46,7 +45,6 @@
   <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/fontawesome.all.min.js') }}"></script>
-  
   <script src="{{ asset('js/hostland.js') }}"></script>
 
   @stack('scripts')

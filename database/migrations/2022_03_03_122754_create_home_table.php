@@ -15,11 +15,12 @@ class CreateHomeTable extends Migration
     {
         Schema::create('home', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('title');
             $table->text('description');
-            $table->string('urlImage');
-            $table->string('link');
+            $table->string('nameImage');
+            $table->string('url');
             $table->string('orden');
+            $table->timestamps();
         });
     }
 

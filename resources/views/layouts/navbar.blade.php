@@ -5,8 +5,8 @@
   </a>
 
   <ul class="nav nav-pills">
-    <li class="nav-item"><a href="home/" class="nav-link" ><i class="fa-solid fa-house"></i> Home</a></li>
-    <li class="nav-item"><a href="noticias/"class="nav-link"><i class="fa-brands fa-neos"></i> Noticias</a></li>
-    <li class="nav-item"><a href="contacto/" class="nav-link"><i class="fa-solid fa-address-book"></i> Contacto</a></li>
+    <li class="nav-item"><a href="{{ route('publicHome') }}" class="nav-link" ><i class="fa-solid fa-house"></i> Home</a></li>
+    <li class="nav-item"><a href="{{ route('publicNews') }}"class="nav-link"><i class="fa-brands fa-neos"></i> Noticias</a></li>
+    <li class="nav-item"><a href="{{ route('publicContact') }}" class="nav-link"><i class="fa-solid fa-address-book"></i> Contacto</a></li>
   </ul>
 </header>

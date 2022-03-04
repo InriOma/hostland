@@ -4,10 +4,19 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-6">
+
+    @if ($message = Session::get('success'))
+      <div class="alert alert-success">
+          <p>{{ $message }}</p>
+      </div>
+    @endif
+    
+    <h5>Formulario de Contacpo</h5>
+    <br>
+    <div class="col-lg-6 col-md-6 col-sm-6 m-4">
       <div class="form-area">
 
-        <form role="form" method="post" action="{{ route('contacto') }}">
+        <form role="form" method="POST" action="{{ route('publicContactStore') }}">
           @csrf
 
           <div class="mb-3">
@@ -22,7 +31,7 @@
 
           <div class="mb-3">
             <label for="InputEmail1" class="form-label">Corre Electrónico</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
           </div>
 
           <div class="mb-3">
@@ -36,8 +45,8 @@
           </div>
 
           <div class="mb-3">
-            <label for="FormControlTextarea1" class="form-label">Mensaje</label>
-            <textarea class="form-control" id="message" nane="message" maxlength="140" rows="7"></textarea>
+            <label for="labelTexto" class="form-label">Mensaje</label>
+            <textarea class="form-control" name="message" id="message" maxlength="140" rows="3" required></textarea>
             <div id="characterLeft" class="form-text">140 caracteres restantes</div>
           </div>
     

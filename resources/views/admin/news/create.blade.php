@@ -9,7 +9,7 @@
     <h5 class="card-header">Noticias</h5>
     <div class="card-body">
       <h5 class="card-title">Agregar Noticia</h5>
-        <form role="form" method="post" action="{{ route('adminNewsStore') }}">
+        <form role="form" method="POST" action="{{ route('adminNewsStore') }}">
           @csrf
 
           <div class="mb-3">
@@ -23,8 +23,8 @@
           </div>
 
           <div class="mb-3">
-            <label for="FormControlTextarea" class="form-label">Texto</label>
-            <textarea class="form-control" id="text" nane="text" rows="3"></textarea>
+            <label for="labelTexto" class="form-label">Texto</label>
+            <textarea class="form-control" name="texto" id="texto" rows="3"></textarea>
           </div>
     
           <button type="submit" class="btn btn-success">Enviar</button>
